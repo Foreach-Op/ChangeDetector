@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -11,21 +12,12 @@ public class Main {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
         File file = new File("C:\\Users\\oguzt\\OneDrive\\Masaüstü\\University Lectures\\Comp 341");
-        File file3 = new File("C:\\Users\\oguzt\\OneDrive\\Masaüstü\\University Lectures\\Comp 341");
-        File file2 = new File("D:\\Riot Games\\VALORANT\\live\\Engine\\Binaries\\ThirdParty\\CEF3\\Win64\\Resources\\locales\\am.pak");
-        recursive(file);
+        File file2 = new File("C:\\Users\\oguzt\\OneDrive\\Masaüstü\\University Lectures\\Elec 201\\Matlab Projects\\Project 2");
 
-        //Create checksum for this file
-//Use MD5 algorithm
-        MessageDigest md5Digest = MessageDigest.getInstance("MD5");
-
-//Get the checksum
-        String checksum = getFileChecksum(md5Digest, file2);
-
-//see checksum
-        System.out.println(file.hashCode());
-        System.out.println(file3.hashCode());
-
+        Tree tree=new Tree(file2);
+        tree.includeFiles(tree.getRoot());
+        tree.traversal(tree.getRoot());
+        System.out.println(tree.getSize());
     }
 
     public static void recursive(File file){
